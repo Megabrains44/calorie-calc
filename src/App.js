@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
 
+import Selector from './components/Selector';
+import { FoodProvider } from './FoodContext';
+import UserFoods from './components/UserFoods';
+// import AddItem from './components/AddItem';
+
+
+
+
 function App() {
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <h1 className="App-title">Calorie Calc</h1>
+      <main className="App-main">
+        <FoodProvider>
+          <Selector />
+          <UserFoods />
+        </FoodProvider>
+      </main>
     </div>
   );
 }
