@@ -1,38 +1,214 @@
-.App {
-  text-align: center;
-}
+/* Typography */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App-main{
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+.App-title{
+  text-align: center;
+  padding: 1rem;
+}
+.food-selector-container{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  /* max-width: 80rem; */
+  background: #a6aed3;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.food-selector{
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* max-width: 90%; */
+  min-height: 20em;
+  padding: 2rem 4rem;
+  gap: 2rem;
+  
+  /* overflow: auto; */
+}
+@media screen and (max-width: 600px){
+  div.food-selector{
+    padding: 1.5rem 2rem;
   }
-  to {
-    transform: rotate(360deg);
+}
+.overflow-true{
+  overflow: auto;
+}
+.overflow-false{
+  overflow: unset;
+}
+.food-selector::-webkit-scrollbar-track{
+  background-color: rgb(31, 31, 31);
+  
+}
+.food-selector::-webkit-scrollbar-thumb{
+  background-color: rgb(136, 136, 136);
+  border-radius: 1rem;
+}
+.food-selector::-webkit-scrollbar-button{
+  background-color: rgb(31, 31, 31);
+}
+.food-selector::-webkit-scrollbar{
+  background-color: rgb(31, 31, 31);
+  height: 1.5vh;
+}
+
+
+.food-pagebuttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform:translate(0, -50%);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  /* background-color: red; */
+}
+.food-pagebuttons svg{
+  cursor: pointer;
+  transition: fill 200ms ease-in-out;
+}
+.food-pagebuttons svg:hover{
+  fill: rgb(129, 90, 255);
+}
+
+/* .food-selector::after{
+  content: '';
+  position: absolute;
+  left: 0; 
+  background-color: rgb(226, 46, 46);
+  height: 100%;
+  width: 100%;
+} */
+.food-item{
+  border: 2px solid lightblue;
+  padding: 1rem;
+  border-radius: .3rem;
+  max-width: fit-content;
+}
+.food-img{
+  max-width: 250px;
+  max-height: 200px;
+
+} 
+.food-name{
+  /* background: #949fff; */
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.food-calories{
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: .9rem;
+  color:rgb(47, 47, 47);
+}
+.food-calories::after{
+  content: ' calories'
+}
+.searchinput{
+  position: absolute;
+  right: 1rem;
+  top: 2.5%;
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: 1rem;
+}
+.searchinput:focus{
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 0px 2px rgb(164, 131, 255);
+
+}
+.foodtype-dropdown{
+  position: absolute;
+  left: 2%;
+  top: 2.5%;
+  border-radius: .2rem;
+  padding: .4rem .6rem;
+  border: none;
+  outline: none;
+  background-color: rgb(240, 201, 26);
+  /* width: 100%; */
+}
+.foodtype-dropdown:focus{
+  outline: none;
+  box-shadow: 0 0 0 2px lightcyan;
+}
+.userfoods{
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  /* align-content: center; */
+  /* justify-content: center; */
+
+  min-height: 17rem;
+  width: 95%;
+  padding: .8rem;
+  background: rgb(240, 201, 26);
+  position: relative;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.userfoods-input{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 17rem;
+  background-color: rgb(218, 218, 218);
+  /* max-width: 800px; */
+}
+@media screen and (max-width: 700px){
+  div.userfoods-input{
+    justify-content: center;
   }
+}
+.userfoods-placeholder{
+  font-size: .9rem;
+  padding: .5rem;
+  color: rgb(90, 90, 90);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.noresults{
+  position: absolute;
+  color: rgb(63, 63, 63);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.userfoods-total-calories{
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.additem{
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.294);
+  border-radius: .2rem;
+  font-size: .7rem;
+  cursor: pointer;
+  padding: .3rem 1rem;
+  
+  border: none;
+  background-color: rgb(255, 192, 75);
+  transition: filter 200ms ease-in-out;
+  
+  /* position: absolute; */
+  bottom: .9rem;
+  right: 5%;
+}
+.additem:hover{
+  filter: brightness(.9);
 }
