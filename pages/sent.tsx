@@ -17,7 +17,7 @@ import {browserLocalPersistence, getAuth, getRedirectResult, GoogleAuthProvider,
 import Email from '../types/email'
 import { userAuth } from '../atoms/userAuth'
 import User from '../types/user'
-const Home: NextPage = () => {
+const SentEmails: NextPage = () => {
   const isModal = useRecoilValue(emailModal);
   const [emails, setEmails] = useRecoilState(emailsState);
   const [userInfo, setUserInfo] = useRecoilState(userAuth)
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
   
   useEffect(() => {
     if (Object.keys(userInfo).length === 0) return;
-    const q = query(collection(db,'emails'), where("receiver", "==", userInfo))
+    const q = query(collection(db,'emails'), where("sender", "==", userInfo))
     const q2 = collection(db, 'emails')
     return onSnapshot(q, (snapshot) => {
       const emails:Email[] = [];
@@ -43,11 +43,10 @@ const Home: NextPage = () => {
       <Navbar />
       <main className='flex'>
 
-      <Sidebar selected='inbox'/>
-      <div className='flex-1 overflow-x-hidden'>
+      <Sidebar selected='sent'/>
+      <div className='flex-1 w-screen relative overflow-x-hidden'>
       {[...emails]
         .sort((a,b) => b.sentAt.toDate().getTime() - a.sentAt.toDate().getTime())
-        // .filter(email => email.receiver.id === userInfo.id)
         .map(email => <EmailMessage key={email.id} id={email.id} subject={email.subject} message={email.message}  sender={email.sender.name} />)}
       </div>
       </main>
@@ -56,4 +55,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default SentEmails
